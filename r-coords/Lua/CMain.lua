@@ -14,13 +14,20 @@ end)
 
 function OpenUI()
     SetNuiFocus(true, true)
-    local _char = PlayerPedId()
-    local _charPos = math.floor(GetEntityCoords(_char))
-    local _charHeading = math.floor(GetEntityHeading(_char))
+    local ped = PlayerPedId()
+    local curCoords = GetEntityCoords(ped)
+    local currHeading = GetEntityHeading(ped)
+    local testx = ('%.3f'):format(curCoords.x)
+    local testy = ('%.3f'):format(curCoords.y)
+    local testz = ('%.3f'):format(curCoords.z)
+    local stringHeading = ('%.4f'):format(currHeading)
+    print(test)
     SendNUIMessage({
         type = "open",
-        _charPos = _charPos,
-        _charHeading = _charHeading,
+        _charPosx = testx,
+        _charPosy = testy,
+        _charPosz = testz,
+        _charHeading = stringHeading,
     })
 end
 
@@ -37,3 +44,5 @@ RegisterNUICallback('int:noty', function(data)
     end
 end)
   
+
+
